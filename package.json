@@ -1,0 +1,49 @@
+{
+  "name": "rtcstats",
+  "version": "1.0.1",
+  "description": "gather WebRTC API traces and statistics",
+  "main": "rtcstats.js",
+  "dependencies": {
+    "sdp": "^3.0.3",
+    "uuid": "3.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babelify": "^10.0.0",
+    "babel-eslint": "^10.1.0",
+    "bowser": "2.7.0",
+    "browserify": "^16.2.3",
+    "eslint": "^7.1.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-require-path-exists": "^1.1.9",
+    "tape": "^4.10.1",
+    "terser": "^4.8.0",
+    "travis-multirunner": "^4.5.0"
+  },
+  "scripts": {
+    "test": "eslint rtcstats.js trace-ws.js nonmodule.js",
+    "dist": "mkdir -p out && browserify -o out/rtcstats.js nonmodule.js && terser out/rtcstats.js -o rtcstats.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/confabbox/rtcstats.git"
+  },
+  "keywords": [
+    "webrtc",
+    "rtcpeerconnection"
+  ],
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
+  "license": "MIT"
+}
